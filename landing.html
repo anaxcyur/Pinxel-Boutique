@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinxel Boutique</title>
+    <link rel="stylesheet" href="landing.css">
+    <link rel="stylesheet" href="navbar.css">
+    <script src="navbar.js"></script>
+    <script src="login.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar">
+    <div class="logo">
+        <img src="sources/pinxel_logo.png" alt="Pinxel Boutique" style="height: 80px;">
+    </div>
+    
+    <div class="nav-right-group">
+        <div class="nav-links-container">
+            <span onclick="location.href='landing.html'">Home</span>
+            <span onclick="location.href='#about-section'">About</span>
+            <span onclick="location.href='shop.html'">Shop</span>
+        </div>
+
+        <div id="auth-section"></div>
+    </div>
+</nav>
+
+<section class="home">
+    <div class="home__video-container">
+        <video autoplay loop muted playsinline class="home__video-bg">
+            <source src="sources/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="home__video-overlay">
+            <div class="home__brand-content">
+                <img src="sources/pinxel-statement-logo.png" alt="Pinxel Boutique" class="home__center-logo">
+                <p class="home__video-subtitle">Curated Style • Effortless Elegance • Cozy Aesthetics</p>
+                 </div>
+        </div>
+    </div>
+</section>
+
+<section class = "new-arrivals">
+    <h1 class="new-arrivals-title"><i>NEW</i> ARRIVALS</h1>
+    <div class="arrivals-grid">
+        <div class = "arrival-item1">
+            <img class="model-img1" src="sources/new arrival1.png" >
+            <img class="model-hover1" src="sources/new arrival1_1.png" >
+        </div>
+        <div class = "arrival-item2">
+            <img class="model-img2" src="sources/new arrival2.png" >
+            <img class="model-hover2" src="sources/new arrival2_2.png" >
+        </div>
+        <div class = "arrival-item3">
+            <img class="model-img3" src="sources/new arrival3.png" >
+            <img class="model-hover3" src="sources/new arrival3_3.png" >
+        </div>
+    </div>
+    <button type="button" class="btn-look-new-arrivals" onclick="location.href='shop.html?sort=newArrival'">Look New Arrivals</button>
+ </section>
+
+ <section class = "categories">
+        <h1 class="categories-title">CATEGO<i>RIES</i></h1>
+        <div class = "categories-grid">
+            <div class="tops" style="grid-area: tops">
+            <a href="shop.html?category=Tops">
+            <img src="sources/tops.png" class="tops-img">
+            </a>
+            <div class="tops-text-wrapper">
+        <h2>TOPS</h2>
+    </div>
+</div>
+            <div class="shoes" style = "grid-area: shoes">
+                <a href="shop.html?category=Shoes">
+                <img src="sources/shoes.png" class="shoes-img">
+                </a>
+                <div class="shoes-text-wrapper">
+                    <h2>SHOES</h2>
+                </div>
+            </div>
+            <div class="skirts" style = "grid-area: skirts">
+                <a href="shop.html?category=Shorts/Skirts">
+                <img src="sources/skirts.png" class="skirts-img">
+                </a>
+                <div class="skirts-text-wrapper">
+                    <h2>SKIRTS/<br>SHORTS</h2>
+                </div>
+            </div>
+            <div class="dresses" style = "grid-area: dresses">
+                <a href="shop.html?category=Dresses">
+                <img src="sources/dresses.png" class="dresses-img">
+                </a>
+                <div class="dresses-text-wrapper">
+                    <h2>DRESSES</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class = "about-us" id="about-section">
+    <h1>About Us</h1>
+    <p class ="about-us-description1">At Pinxel Boutique, we believe that style should be as effortless as it is expressive. We curate a collection of versatile, high-quality pieces designed to elevate your everyday wardrobe—from cozy, statement knitwear to chic essentials.</p>
+        <div class="about-us-content">
+           <div class="about-us-image-wrapper">
+            <img src="sources/heart-about-us.png" alt="About Us Image" class="heart-img">
+        </div>
+        <div class="about-us-text">
+            <p class = "about-us-description2">Our mission is simple: to provide modern, fashion-forward staples that make you feel confident and comfortable. Whether you’re dressing for a busy day of productivity or a relaxed weekend, Pinxel Boutique offers the perfect blend of soft textures and contemporary silhouettes.
+            <br>Thank you for letting us be a part of your style journey.
+            <br>Stay Bold. Stay Cozy. Stay You.
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="website-footer">
+   
+    <div class="footer-grid-layout">
+        
+        <div class="footer-title">
+            <h1>Stay Bold. Stay Cozy.<br>Stay You.</h1>
+        </div>
+
+        <p class="signature-statement">
+            Created by Pinxel Boutique, this store and signature collection celebrates our passion for curated<br>style and cozy aesthetics. Carefully designed for you.
+        </p>
+        <img src="sources/model.png" class="footer-model-img">
+    </div>
+</div>
+
+<footer class="footer-links-container">
+    <div class="footer-col">
+        <img src="sources/pinxel_logo.png" class="footer-small-logo" alt="Pinxel Boutique">
+        <p class="copy-small">All rights reserved ©2026</p>
+    </div>
+
+    <div class="footer-col">
+        <p>National University</p>
+        <p>Coral Way St.</p>
+        <p>Pasay, Philippines</p>
+    </div>
+
+    <div class="footer-col">
+        <a href="#">Privacy Policy</a>
+    </div>
+
+    <div class="footer-col">
+        <a href="https://www.facebook.com/anamariarachel.medalla/" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/anaaxcyur_/" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/ana-maria-rachel-medalla-19b883306/" target="_blank">LinkedIn</a>
+        <a href="https://x.com/shuasanaity" target="_blank">Twitter (X)</a>
+    </div>
+
+    <div class="footer-col">
+        <a href="#">Work</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
+        <a href="#">Careers</a>
+    </div>
+</footer>
+</body>
+</html>

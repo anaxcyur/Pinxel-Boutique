@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinxel Boutique Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Roboto:wght@400;700&family=Poppins:wght@400;600;900&family=Archivo+Black&family=Lisu+Bosa:ital,wght@0,400;0,900;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="navbar.css">
+    <script src="shop.js" defer></script>
+    <script src="navbar.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<!-- NAVIGATION BAR -->
+    <nav class="navbar">
+    <div class="logo">
+        <img src="sources/pinxel_logo.png" alt="Pinxel Boutique" style="height: 80px;">
+    </div>
+    
+    <div class="nav-right-group">
+        <div class="nav-links-container">
+            <span onclick="location.href='landing.html'">Home</span>
+            <span onclick="location.href='landing.html#about-section'">About</span>
+            <span onclick="location.href='shop.html'">Shop</span>
+        </div>
+
+        <div id="auth-section"></div>
+    </div>
+</nav>
+<!-- banner -->
+<div class="banner-container">
+    <img src="sources/banner.png" alt="Shop Banner" class="shop-banner-img">
+    <h1 id="dynamic-banner-title" class="banner-title">ALL PRODUCTS</h1>
+
+</div>
+<!-- FILTER BAR -->
+
+    <div id="filter-sidebar" class="filter-sidebar">
+        <div class="filter-content">
+            <button class="close-menu" onclick="toggleFilterMenu()">×</button>
+            <div class="filter-column main-options">
+                <h2>Sort & Filter</h2>
+                <ul>
+                    <li onclick="showSubMenu('categories')">Categories</li>
+                    <li onclick="showSubMenu('colors')">Colors</li>
+                    <li onclick="showSubMenu('sort')">Sort</li>
+                </ul>
+                <div class="filter-actions">
+                    <button class="btn-show" onclick="applyFilters()">Show Results</button>
+                    <button class="btn-clear" onclick="clearFilters()">Clear Filters</button>
+                </div>
+            </div>
+            
+            <div class="separator"></div>
+
+            <div class="filter-column sub-options">
+                <h2 id="sub-menu-title">Categories</h2>
+                <form id="filter-form">
+                    <ul id="sub-menu-list"></ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <section class="products-section">
+        <div class="products-header">
+            <h1>ALL PRODUCTS</h1>
+            <div class="filter-nav">
+                <span onclick="toggleFilterMenu()">Categories</span>
+                <span onclick="toggleFilterMenu()">Colors</span>
+                <span onclick="toggleFilterMenu()">Sort</span>
+            </div>
+        </div>
+
+        <div class="products-grid">
+            </div>
+
+        <div id="pagination-numbers" class="pagination-container"></div>
+    </section>
+
+<footer class="footer-links-container">
+        <div class="footer-col">
+            <img src="sources/pinxel_logo.png" class="footer-small-logo" alt="Pinxel Boutique">
+            <p class="copy-small">All rights reserved ©2026</p>
+        </div>
+
+        <div class="footer-col">
+            <p>National University</p>
+            <p>Coral Way St.</p>
+            <p>Pasay, Philippines</p>
+        </div>
+
+        <div class="footer-col">
+            <a href="#">Privacy Policy</a>
+        </div>
+
+        <div class="footer-col">
+            <a href="https://www.facebook.com/anamariarachel.medalla/" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/anaaxcyur_/" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com/in/ana-maria-rachel-medalla-19b883306/" target="_blank">LinkedIn</a>
+            <a href="https://x.com/shuasanaity" target="_blank">Twitter (X)</a>
+        </div>
+
+        <div class="footer-col">
+            <a href="#">Work</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+        </div>
+    </footer>
+</body>
+</html>

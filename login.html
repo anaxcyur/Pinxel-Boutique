@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pinxel Boutique | Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-box active" id="login-form">
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="loginPass" placeholder="Password" required>
+                <i class="fa-solid fa-eye" id="toggleLoginPass"></i>
+            </div>
+            <button type="button" id="submitLoginBtn">Login</button>
+            <p>New here? <a href="#" id="linkToRegister">Register</a></p>
+        </div>
+
+        <div class="form-box" id="register-form">
+            <h2>Register</h2>
+            <input type="text" id="regName" placeholder="Name" required>
+            <input type="email" id="regEmail" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="regPass" placeholder="Password" required>
+                <i class="fa-solid fa-eye" id="toggleRegPass"></i>
+            </div>
+            <button type="button" id="submitRegBtn">Register</button>
+            <p>Already have an account? <a href="#" id="linkToLogin">Login</a></p>
+        </div>
+    </div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { 
+        getAuth, 
+        signInWithEmailAndPassword, 
+        createUserWithEmailAndPassword, 
+        signOut, 
+        onAuthStateChanged, 
+        setPersistence, 
+        browserLocalPersistence 
+    } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyC80cIJgUiSzT0mAkanVK-X0jW-EhhYvM4",
+        authDomain: "pinxelboutique.firebaseapp.com",
+        projectId: "pinxelboutique",
+        storageBucket: "pinxelboutique.firebasestorage.app",
+        messagingSenderId: "206364783679",
+        appId: "1:206364783679:web:9f014e61374f5f10f3748a",
+        measurementId: "G-FFQWC7S8GH",
+        databaseURL: "https://pinxelboutique-default-rtdb.asia-southeast1.firebasedatabase.app"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const database = getDatabase(app);
+
+    function redirectUser() {
+        const params = new URLSearchParams(window.location.search);
+        const destination = params.get('redirectTo');
+        if (destination) {
+            window.location.href = decodeURIComponent(destination);
+        } else {
+            window.location.href = "landing.html";
+        }
+    }
+
+    onAuthStateChanged(auth, (user) => {
+        if (user && localStorage.getItem('isLoggedIn') === 'true') {
+            redirectUser();
+        }
+    });
+
+    function showForm(formId) {
+        document.querySelectorAll('.form-box').forEach(box => box.classList.remove('active'));
+        const targetForm = document.getElementById(formId);
+        if (targetForm) targetForm.classList.add('active');
+    }
+
+    function togglePassword(inputId, iconElement) {
+        const passwordInput = document.getElementById(inputId);
+        if (passwordInput && iconElement) {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                iconElement.classList.replace("fa-eye", "fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                iconElement.classList.replace("fa-eye-slash", "fa-eye");
+            }
+        }
+    }
+
+    // LOGIN EXECUTION LOGIC
+    async function handleLogin() {
+        const email = document.getElementById('loginEmail').value.trim();
+        const pass = document.getElementById('loginPass').value;
+        
+        if (!email || !pass) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        try {
+            await setPersistence(auth, browserLocalPersistence);
+            
+            const userCredential = await signInWithEmailAndPassword(auth, email, pass);
+            const user = userCredential.user;
+
+            const snapshot = await get(ref(database, 'users/' + user.uid));
+            if (snapshot.exists()) {
+                localStorage.setItem('currentUser', JSON.stringify(snapshot.val()));
+            } else {
+                localStorage.setItem('currentUser', JSON.stringify({ uid: user.uid, email: user.email, name: "" }));
+            }
+
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            redirectUser();
+        } catch (error) {
+            alert("Login Error: " + error.message);
+        }
+    }
+
+    // REGISTER EXECUTION LOGIC
+    async function handleRegister() {
+        const name = document.getElementById('regName').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const pass = document.getElementById('regPass').value;
+        
+        if (!name || !email || !pass) {
+            alert("Please fill out all fields.");
+            return;
+        }
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+            const user = userCredential.user;
+
+            const profilePayload = {
+                uid: user.uid,
+                name: name,
+                email: email,
+                birthday: "",
+                gender: "",   
+                address: "",
+                city: "",
+                zip: ""
+            };
+
+            await set(ref(database, 'users/' + user.uid), profilePayload);
+            
+            await signOut(auth);
+            localStorage.clear();
+
+            document.getElementById('regName').value = "";
+            document.getElementById('regEmail').value = "";
+            document.getElementById('regPass').value = "";
+
+            showForm('login-form');
+            const loginForm = document.getElementById('login-form');
+            const msg = document.createElement('div');
+            msg.className = 'success-message';
+            msg.style.color = "#b8627b";
+            msg.style.fontWeight = "bold";
+            msg.style.marginBottom = "15px";
+            msg.textContent = "Account created successfully! Please log in.";
+            loginForm.prepend(msg);
+            setTimeout(() => msg.remove(), 4000);
+
+        } catch (error) {
+            alert("Registration Error: " + error.message);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById('submitLoginBtn')?.addEventListener('click', handleLogin);
+        document.getElementById('submitRegBtn')?.addEventListener('click', handleRegister);
+        
+        document.getElementById('linkToRegister')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            showForm('register-form');
+        });
+        document.getElementById('linkToLogin')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            showForm('login-form');
+        });
+
+        document.getElementById('toggleLoginPass')?.addEventListener('click', function() {
+            togglePassword('loginPass', this);
+        });
+        document.getElementById('toggleRegPass')?.addEventListener('click', function() {
+            togglePassword('regPass', this);
+        });
+    });
+</script>
+</body>
+</html>

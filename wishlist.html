@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinxel Boutique | My Wishlist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="wishlist.css">
+    <script src="navbar.js" defer></script>
+    <script src="wishlist.js" defer></script>
+</head>
+<body>
+
+<div id="cute-confirm-modal" class="cute-modal-overlay">
+    <div class="cute-modal-card">
+        <div class="cute-modal-icon-wrap">
+            <svg class="cute-modal-bag-icon" viewBox="0 0 100 100">
+                <path d="M38,32 C38,18 62,18 62,32" />
+                <rect x="22" y="32" width="56" height="52" rx="12" />
+            </svg>
+        </div>
+
+        <h2 id="cute-modal-title" class="cute-modal-title">Add to Cart?</h2>
+
+        <p id="cute-modal-message">Love this item? Click below to add it to your cart</p>
+
+        <div class="cute-modal-actions">
+            <button id="cute-modal-no" class="cute-btn cute-btn-secondary">No, wait</button>
+            <button id="cute-modal-yes" class="cute-btn cute-btn-primary">Add to Cart</button>
+        </div>
+    </div>
+</div>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="sources/pinxel_logo.png" alt="Pinxel Boutique" style="height: 80px;">
+        </div>
+        <div class="nav-right-group">
+            <div class="nav-links-container">
+                <span onclick="location.href='landing.html'">Home</span>
+                <span onclick="location.href='landing.html#about-section'">About</span>
+                <span onclick="location.href='shop.html'">Shop</span>
+            </div>
+            <div id="auth-section"></div>
+        </div>
+    </nav>
+
+    <main class="wishlist-container">
+        <div class="wishlist-header-row">
+            <h1 class="wishlist-title">MY WISHLIST</h1>
+            <span class="wishlist-count" id="wishlist-count-title">WISHLIST ITEMS | 0 ITEM(S)</span>
+        </div>
+
+        <div class="wishlist-layout">
+            <div class="wishlist-items" id="wishlist-items-container"></div>
+
+            <aside class="wishlist-actions">
+                <button class="btn-continue-shopping" onclick="location.href='shop.html'">CONTINUE SHOPPING</button>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="footer-links-container">
+        <div class="footer-col">
+            <img src="sources/pinxel_logo.png" class="footer-small-logo" alt="Pinxel Boutique">
+            <p class="copy-small">All rights reserved ©2026</p>
+        </div>
+        <div class="footer-col">
+            <p>National University</p>
+            <p>Coral Way St.</p>
+            <p>Pasay, Philippines</p>
+        </div>
+        <div class="footer-col">
+            <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+            <a href="https://www.facebook.com" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://x.com" target="_blank">Twitter (X)</a>
+        </div>
+        <div class="footer-col">
+            <a href="#">Work</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+        </div>
+    </footer>
+
+</body>
+</html>

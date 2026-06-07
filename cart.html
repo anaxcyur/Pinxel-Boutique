@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinxel Boutique | Shopping Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="cart.css">
+    <script src="navbar.js" defer></script>
+    <script src="cart.js" defer></script>
+</head>
+<body>
+<!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="sources/pinxel_logo.png" alt="Pinxel Boutique" style="height: 80px;">
+        </div>
+        <div class="nav-right-group">
+            <div class="nav-links-container">
+                <span onclick="location.href='landing.html'">Home</span>
+                <span onclick="location.href='landing.html#about-section'">About</span>
+                <span onclick="location.href='shop.html'">Shop</span>
+            </div>
+            <div id="auth-section"></div>
+        </div>
+    </nav>
+<!-- CART -->
+    <main class="cart-container">
+        <div class="cart-header-row">
+            <h1 class="cart-title">SHOPPING CART</h1>
+            <span class="cart-count" id="cart-count-title">CART ITEMS | 1 ITEM(S)</span>
+        </div>
+
+        <div class="cart-layout">
+            <div class="cart-items" id="cart-items-container">
+                
+                <div class="cart-item">
+                    <div class="item-img-wrapper">
+                        <img src="tops/1.png" class="item-main-img" alt="Babydoll top">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <h2>Babydoll top</h2>
+                            <button class="remove-btn" onclick="removeFromCart(0)">&times;</button>
+                        </div>
+                        <p class="attribute">Color: Pink</p>
+                        <p class="attribute">Size: Women S</p>
+                        <p class="item-price">PHP 1,199.00</p>
+                        
+                        <div class="item-footer">
+                            <div class="quantity-selector">
+                                <label>QUANTITY</label>
+                                <select onchange="updateQuantity(0, this.value)">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            <p class="subtotal-text">SUBTOTAL: <span>PHP 1,199.00</span></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+<!-- CART SUMMARY -->
+            <aside class="order-summary-sidebar">
+                <div class="summary-card">
+                    <h3>ORDER SUMMARY</h3>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span class="subtotal-value" id="summary-subtotal">PHP 1,199.00</span>
+                    </div>
+
+                    <div class="summary-row total">
+                        <span>Total Amount</span>
+                        <span class="total-value" id="summary-total">PHP 1,199.00</span>
+                    </div>
+
+                    <p class="vat-note" id="summary-vat">VAT included: PHP 143.88</p>
+                    
+                    <button class="btn-checkout">CHECKOUT</button>
+                    <button class="btn-continue-shopping" onclick="location.href='shop.html'">CONTINUE SHOPPING</button>
+                </div>
+            </aside>
+        </div>
+    </main>
+<!-- FOOTER -->
+    <footer class="footer-links-container">
+        <div class="footer-col">
+            <img src="sources/pinxel_logo.png" class="footer-small-logo" alt="Pinxel Boutique">
+            <p class="copy-small">All rights reserved ©2026</p>
+        </div>
+        <div class="footer-col">
+            <p>National University</p>
+            <p>Coral Way St.</p>
+            <p>Pasay, Philippines</p>
+        </div>
+        <div class="footer-col">
+            <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+            <a href="https://www.facebook.com" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://x.com" target="_blank">Twitter (X)</a>
+        </div>
+        <div class="footer-col">
+            <a href="#">Work</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+        </div>
+    </footer>
+
+</body>
+</html>

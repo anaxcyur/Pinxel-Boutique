@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinxel Boutique | Membership</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="profile.js" type="module" defer></script>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="sources/pinxel_logo.png" alt="Pinxel Boutique" style="height: 80px;">
+        </div>
+        <div class="nav-right-group">
+            <div class="nav-links-container">
+                <span onclick="location.href='landing.html'">Home</span>
+                <span onclick="location.href='landing.html#about-section'">About</span>
+                <span onclick="location.href='shop.html'">Shop</span>
+            </div>
+            <div id="auth-section"></div>
+        </div>
+    </nav>
+
+    <div class="membership-title-container">
+        <h1>MEMBERSHIP</h1>
+    </div>
+
+    <main class="membership-layout">
+        
+        <aside class="sidebar">
+            <div class="menu-group">
+                <h3>Membership</h3>
+                <ul>
+                    <li class="menu-item active" data-target="profile-view">Profile</li>
+                    <li class="menu-item" data-target="purchase-history-view">Purchase history</li>
+                </ul>
+            </div>
+            <div class="menu-group">
+                <h3>Profile settings</h3>
+                <ul>
+                    <li class="menu-item" data-target="edit-profile-view">Edit profile</li>
+                    <li class="menu-item" data-target="address-book-view">Address book</li>
+                    <li class="menu-item eject-action" id="sidebarLogoutBtn">Logout</li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="content-workspace">
+
+            <div id="profile-view" class="content-panel active">
+                <h2>PROFILE</h2>
+                <div class="profile-info-grid">
+                    <div class="info-box">
+                        <label>EMAIL ADDRESS</label>
+                        <p id="view-email">loading...</p>
+                    </div>
+                    <div class="info-box">
+                        <label>BIRTHDAY</label>
+                        <p id="view-birthday">-</p>
+                    </div>
+                    <div class="info-box">
+                        <label>POSTAL CODE</label>
+                        <p id="view-zip">-</p>
+                    </div>
+                    <div class="info-box">
+                        <label>GENDER</label>
+                        <p id="view-gender">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="edit-profile-view" class="content-panel">
+                <h2>EDIT PROFILE</h2>
+                <form id="edit-profile-form" onsubmit="event.preventDefault();">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="profName">Full Name</label>
+                            <input type="text" id="profName">
+                        </div>
+                        <div class="input-group">
+                            <label for="profBirthday">Birthday</label>
+                            <input type="date" id="profBirthday">
+                        </div>
+                        <div class="input-group">
+                            <label for="profGender">Gender</label>
+                            <select id="profGender">
+                                <option value="">Select Gender</option>
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Non-binary">Non-binary</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" id="saveProfileBtn" class="btn-action-primary">SAVE CHANGES</button>
+                </form>
+            </div>
+
+            <div id="address-book-view" class="content-panel">
+    <h2>ADDRESS BOOK</h2>
+    
+        <div id="saved-addresses-list-container" style="margin-bottom: 30px; display: flex; flex-direction: column; gap: 15px;">
+            <p style="color:#888;">Loading registry logs...</p>
+        </div>
+
+        <hr style="border: 0; border-top: 1px dashed #ffc0d0; margin: 30px 0;">
+
+        <h3>+ ADD NEW ADDRESS ENTRY</h3>
+        <form id="address-form" onsubmit="event.preventDefault();">
+            <div class="form-grid">
+                <div class="input-group full-width">
+                    <label for="profAddress">Street Address</label>
+                    <input type="text" id="profAddress" placeholder="Unit, House Number, Building, Street Name">
+                </div>
+                <div class="input-group">
+                    <label for="profCity">City</label>
+                    <input type="text" id="profCity" placeholder="City">
+                </div>
+                <div class="input-group">
+                    <label for="profZip">Postal / ZIP Code</label>
+                    <input type="text" id="profZip" placeholder="ZIP Code">
+                </div>
+            </div>
+            <button type="button" id="saveAddressBtn" class="btn-action-primary">ADD TO ADDRESS BOOK</button>
+        </form>
+    </div>
+
+            <div id="purchase-history-view" class="content-panel">
+                <h2>PURCHASE HISTORY</h2>
+                <div class="empty-history-box">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <p>No recent purchases found on this membership account.</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer-links-container">
+        <div class="footer-col">
+            <img src="sources/pinxel_logo.png" class="footer-small-logo" alt="Pinxel Boutique">
+            <p class="copy-small">All rights reserved ©2026</p>
+        </div>
+        <div class="footer-col">
+            <p>National University</p>
+            <p>Coral Way St.</p>
+            <p>Pasay, Philippines</p>
+        </div>
+        <div class="footer-col">
+            <a href="#">Privacy Policy</a>
+        </div>
+        <div class="footer-col">
+            <a href="https://www.facebook.com" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com" target="_blank">Instagram</a>
+            <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+            <a href="https://x.com" target="_blank">Twitter (X)</a>
+        </div>
+        <div class="footer-col">
+            <a href="#">Work</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#">Careers</a>
+        </div>
+    </footer>
+
+</body>
+</html>

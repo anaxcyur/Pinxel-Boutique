@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+.navbar {
+    background-color: rgba(255, 8, 69, 0.156); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 10px clamp(10px, 1vw, 40px); 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    color: #000000; 
+    position: sticky;
+    top: 0;           
+    z-index: 1000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    overflow: hidden; 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 50px;  
+    width: auto;
+    cursor: pointer;
+}
+
+.nav-links-container {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 5vw, 100px); 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-links-container span {
+    color: rgb(0, 0, 0); 
+    cursor: pointer;
+    font-size: clamp(10px, 4vw, 26px); 
+    transition: opacity 0.2s, transform 0.2s ease-in-out, border-bottom 0.2s ease;
+    white-space: nowrap;
+    padding-bottom: 2px;
+    padding: 2px clamp(6px, 1.5vw, 20px);
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links-container span.active,
+.nav-links-container span:hover {
+    color: #524B4B;
+    transform: scale(1.1);
+    border-bottom: 2px solid #524B4B;
+}
+
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 40px;  
+    margin-left: auto;
+}
+
+.logged-in-icons {
+    display: flex !important; 
+    gap: 40px;
+    align-items: center;
+    visibility: visible;
+    opacity: 1;
+}
+
+.icon-circle {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease;
+}
+
+.icon-circle:hover {
+    transform: scale(1.1);
+}
+
+.icon-circle img {
+    width: 24px; 
+    height: auto;
+    display: block;
+    filter: brightness(0) saturate(100%); 
+}
+
+.btn-login-nav {
+    background-color: #ffffffae; 
+    color: #000000;           
+    border: none;
+    padding: clamp(5px, 1.5vw, 10px) clamp(10px, 3vw, 30px); 
+    margin-left: clamp(5px, 2vw, 10px);
+    border-radius: 50px;       
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(10px, 2vw, 24px);
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-login-nav:hover {
+    background-color: #9d9393;
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+}
+
+/*MOBILE FLOATING BOTTOM NAVBAR */
+@media (max-width: 480px) {
+    
+    .navbar > :not(.nav-right-group) {
+        display: none !important;
+    }
+
+    .navbar {
+        position: fixed !important;
+        top: auto !important;
+        bottom: 20px !important; 
+        left: 5% !important;
+        right: 5% !important;
+        width: 90% !important;
+        height: 65px !important;
+        background-color: #ffffff !important; 
+        border-radius: 35px !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+        padding: 0 15px !important;
+        box-sizing: border-box !important;
+        backdrop-filter: none;
+    }
+
+    .nav-right-group {
+        width: 100% !important;
+        margin: 0 !important;
+        display: flex !important;
+        justify-content: space-between !important; 
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    .nav-links-container {
+        position: static !important; 
+        transform: none !important;
+        margin: 0 !important;
+        gap: 0 !important;
+        width: 65% !important; 
+        justify-content: space-around !important;
+        display: flex !important; 
+    }
+
+    .nav-links-container span {
+        color: #FFC0D0 !important; 
+        font-size: 15px !important;
+        border-bottom: none !important;
+    }
+
+    .logged-in-icons {
+        gap: 12px !important;
+        width: auto !important;
+    }
+
+    .icon-circle {
+        border: none !important;
+        background: transparent !important;
+    }
+    
+    .icon-circle img {
+        width: 20px !important;
+        filter: none !important;
+    }
+
+    .btn-login-nav {
+        font-size: 13px !important;
+        padding: 6px 12px !important;
+        margin-left: auto !important;
+        background-color: #FFC0D0 !important;
+        color: white !important;
+    }
+}
